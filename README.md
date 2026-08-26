@@ -8,7 +8,7 @@ pip install -e          # Edition mode.
 pip install .           # Normal installation.
 ```
 
-We ommit the instalattion of PyTorch, Transformers, vLLM for user customisation.
+We ommit the installation of PyTorch, Transformers, vLLM for user customisation.
 
 # Project Structure
 
