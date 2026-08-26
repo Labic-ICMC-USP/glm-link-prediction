@@ -1,0 +1,11 @@
+provider: vllm # options: [ollama, openrouter]
+model_name: Qwen/Qwen3-4B-Instruct-2507 # options (validated): [gemma3:4b, google/gemini-2.5-flash-lite]
+#model_name: Qwen/Qwen3-1.7B # requer desabilitar o modo de think na criação do prompt (apply_prompt_template -> enable_think=False)
+use_neighbours: true
+seed: 2026 # seed global
+
+generation_params: # incrementar eventualmente com outros parâmetros, como max_tokens, top_p, etc.
+  temperature: 0.0
+  seed: 2026
+  max_model_len: 2048 #2560 disaster lol
+  max_tokens: 256 # é o suficiente. tamanhos menores causam erros de parsing no json.

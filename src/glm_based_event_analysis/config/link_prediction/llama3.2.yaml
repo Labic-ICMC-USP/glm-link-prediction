@@ -1,0 +1,10 @@
+provider: vllm # options: [ollama, openrouter]
+model_name: meta-llama/Llama-3.2-3B-Instruct # options (validated): [gemma3:4b, google/gemini-2.5-flash-lite]
+use_neighbours: true
+seed: 2026 # seed global
+
+generation_params: # incrementar eventualmente com outros parâmetros, como max_tokens, top_p, etc.
+  temperature: 0.0
+  seed: 2026
+  max_model_len: 2048
+  max_tokens: 256 # é o suficiente. tamanhos menores causam erros de parsing no json.

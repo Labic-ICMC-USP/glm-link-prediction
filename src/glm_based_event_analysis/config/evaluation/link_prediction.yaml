@@ -1,0 +1,15 @@
+split:
+  test_pct: 0.2
+  true_edge_quantity: 1.0 # number of true edges in the test set. If < 1 (or float), treated as percentage of total true edges.
+  seed: 2026
+
+negative_examples:
+  hard_semantic_pct: 0.4 # percentage of negative examples withhigh semantic similarity.
+  temporal_plausible_pct: 0.4 # percentage of negative examples with temporal proximity (but no edge).
+  random_pct: 0.2 # percentage of negative examples sampled randomly.
+  max_temporal_window: 31 # maximum number of days to consider a negative example temporally plausible. *Must* match the graph construction parameter.
+
+embedding:
+  model_name: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  batch_size: 128
+  device: "cpu"

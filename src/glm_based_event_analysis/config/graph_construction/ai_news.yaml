@@ -1,0 +1,29 @@
+# general parameters for graph construction
+general:
+  similarity_method: "what"
+  force_recompute: True
+  tmp_files_dir: "/home/kenzosaki/repos/glm-based-event-analysis/data/interim/ai_news/"
+  embedding_model: "sentence-transformers/all-MiniLM-L12-v2"
+  encoding_batch_size: 128
+
+# distance to similarity conversion functions and their parameters. 
+# parameters used to convert distances to similarities. Each distance type (time, spatial) can have its own conversion method and parameters.
+# used when 'similarity_method' is 'multiply' or 'sum' 
+distance_to_similarity:
+  time: 'exponential'
+  time_args:
+    alpha: 7
+  spatial: 'exponential'
+  spatial_args:
+    alpha: 1000
+
+constraints:
+  use_non_zero_similarities: True
+  force_directed: True
+  semantic_similarity_range: [0.1, 1]
+  spatial_distance_range: [0, 1e4]
+  time_days_range: [0, 31]
+  max_neighbors: 100
+  filter_type: "mad"
+  threshold: 3.0
+  

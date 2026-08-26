@@ -1,0 +1,13 @@
+general: 
+  use_ego_graph: false
+  use_support_anchors: false
+  n_support_anchors: 10
+
+ego_graph:
+  radius: 5
+
+random_walks:
+  bias: none # supported biases: [edge_weight, degree, none]
+  num_walks: 1
+  walk_length: 5
+  inverted: true

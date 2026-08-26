@@ -1,0 +1,10 @@
+provider: openrouter # options: [ollama, openrouter]
+model_name: google/gemini-2.5-flash-lite # options (validated): [gemma3:4b, google/gemini-2.5-flash-lite]
+use_neighbours: false
+n_jobs: 16
+seed: 2026 # seed global
+
+generation_params:
+  temperature: 0.0
+  seed: 2026
+  max_tokens: 256 # acho que nao precisa de muito

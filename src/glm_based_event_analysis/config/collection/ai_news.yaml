@@ -1,0 +1,33 @@
+# expor mais parametros?
+gnews:
+  language: en
+  country: null
+  max_results: 100
+  jobs: 10
+  day_increment: 2
+  start_date: "2026-03-01"
+  end_date: "2026-04-01"
+  results_folder: "/home/kenzosaki/repos/glm-based-event-analysis/data/raw/gnews_results"
+  max_news_per_keyword: null
+
+queries:
+    # AI-related keywords
+    - "artificial intelligence"
+    - "generative AI"
+    - "deep learning"
+    - "large language models"
+    - "llms"
+    - "autonomous agents"
+    # actors
+    - "openai"
+    - "google"
+    - "microsoft"
+    - "anthropic"
+    # social impact implications
+    - "job displacement"
+    - "digital divide"
+    - "algorithmic bias"
+    # political implications
+    - "AI regulation"
+    - "AI ethics"
+    - "AI investment"

@@ -1,0 +1,11 @@
+provider: llamacpp # options: [ollama, openrouter]
+model_name: gemma4:26b # options (validated): [gemma3:4b, google/gemini-2.5-flash-lite]
+use_neighbours: true
+seed: 2026 # seed global
+n_jobs: 16 # maximo suportado pela gpu - 16 para 26B. 4 para 31B
+
+generation_params:
+  temperature: 0.0
+  seed: 2026
+  max_tokens: 256
+  cache_prompt: True # fazer cache do system prompt

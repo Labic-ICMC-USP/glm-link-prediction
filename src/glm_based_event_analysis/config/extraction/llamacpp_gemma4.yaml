@@ -1,0 +1,12 @@
+# backend to use for event component extraction. Currently only "ollama" is supported, but the design allows for future extension to other backends (e.g., OpenAI API, Hugging Face models, etc.)
+backend: llamacpp
+# save intermediate results every N articles to avoid data loss in case of crashes or interruptions. 
+save_every: 100
+
+extraction_config:
+  model_name: "local-model"
+  generation_params: # incrementar eventualmente com outros parâmetros, como max_tokens, top_p, etc.
+    temperature: 0.0
+    seed: 2026
+    max_tokens: 512 # é o suficiente. tamanhos menores causam erros de parsing no json.
+    cache_prompt: true

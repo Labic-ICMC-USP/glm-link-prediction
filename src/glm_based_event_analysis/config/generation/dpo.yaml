@@ -1,0 +1,17 @@
+provider: pre_trained # options: [ollama, openrouter, pre_trained]
+model_name: /exp_local/kenzosaki/models/ai_events_gemma_3_4b_dpo/checkpoint-200 # caminho para modelo pre-treinado
+use_neighbours: false
+
+# inference args
+batch_size: 64
+device: cuda
+
+generation_params:
+  temperature: 1.2
+  top_p: 0.9
+  top_k: 40
+  repetition_penalty: 1.1
+  max_new_tokens: 200
+  min_new_tokens: 32 # força o modelo a gerar pelo menos um evento
+  use_cache: false
+  do_sample: false

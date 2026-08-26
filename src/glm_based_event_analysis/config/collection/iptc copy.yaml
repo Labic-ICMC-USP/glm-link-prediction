@@ -1,0 +1,84 @@
+# expor mais parametros?
+gnews:
+  language: en
+  country: null
+  max_results: 100
+  day_batch: 2
+  day_increment: 1
+  start_date: "2016-06-01"
+  end_date: "2026-06-01"
+  max_news_per_keyword: 200
+
+keywords:
+  - politics
+  - government
+  - election
+  - crisis
+
+  - crime
+  - law
+  - justice
+  - investigation
+
+  - disaster
+  - accident
+  - emergency
+  - incident
+
+  - conflict
+  - war
+  - peace
+  - attack
+
+  - economy
+  - business
+  - finance
+  - crisis
+
+  - health
+  - disease
+  - outbreak
+  - hospital
+
+  - environment
+  - climate
+  - pollution
+
+  - weather
+  - storm
+  - flood
+  - drought
+
+  - science
+  - technology
+  - innovation
+
+  - education
+  - school
+  - university
+  - policy
+
+  - labour
+  - strike
+  - employment
+  - union
+
+  - society
+  - migration
+  - refugees
+  - community
+
+  - transport
+  - accident
+  - infrastructure
+
+  - energy
+  - power
+  - outage
+  - fuel
+
+  - cybersecurity
+  - data
+  - breach
+  - digital
+  - attack

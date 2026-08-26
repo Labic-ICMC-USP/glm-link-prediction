@@ -1,0 +1,59 @@
+global_seed: 2026
+
+dataset_creation:
+  val_pct: 0.1 # percentage of edges to sample for validation set creation. sampled from the train graph
+  data_path: "/exp_local/kenzosaki/data/ai_news_ft_clm/" # directory to save (or load) the created dataset
+  recreate: false # whether to recreate the dataset even if it already exists
+  seed: 2026 # random seed for dataset creation and splitting
+
+random_walks:
+  bias: "none" # bias type for random walks. options: "none", "degree", "edge_weight"
+  num_walks_per_node: 10
+  walk_length: 5
+
+unsloth:
+  model_name: "unsloth/gemma-3-4b-it" # huggingface model
+  model_family: "gemma-3" # used to obtain the chat template
+  max_seq_length: 1024 # input sequence length for the model
+  num_proc: 8 # number of processes to use for dataset processing. if to large, it can cause memory issues. set to 1 to disable multiprocessing.
+
+lora:
+  r: 128
+  alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj","gate_proj", "up_proj", "down_proj", "embed_tokens", "lm_head",] # Add for continual pretraining
+  random_state: 2026
+  use_rslora: true   # We support rank stabilized LoRA
+
+training:
+  dataset_text_field: "text"
+  max_length: 1024 # match the unsloth max_seq_length
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 4
+  metric_for_best_model: "eval_loss" # metric to use for early stopping and best model selection
+  load_best_model_at_end: true # forçar a combinação dos pesos no final do treino
+  eval_strategy: "steps"
+  eval_steps: 40 # evaluate every eval_steps during training
+  gradient_accumulation_steps: 64 
+  warmup_steps: 69
+  num_train_epochs: 3 
+  save_total_limit: 2 # ALSO, this parameter corresponds to the early stopping patience
+  save_strategy: "steps"
+  save_steps: 40 # save checkpoint every save_steps during training. 40
+  learning_rate:  0.0002
+  embedding_learning_rate: 0.00002 # 2-10x smaller than learning_rate
+  optim: "adamw_8bit"
+  weight_decay: 0.001
+  lr_scheduler_type: "linear"
+  report_to: "none"
+  output_dir: "/exp_local/kenzosaki/models/ai_events_gemma_3_4b_clm_r128_lr1e-4_no_json" # directory to save the fine-tuned model and results
+  logging_dir: "/exp_local/kenzosaki/models/ai_events_gemma_3_4b_clm_r128_lr1e-4_no_json" # directory to save training logs
+  seed: 2026
+  data_seed: 2026
+  use_liger_kernel: true # enabled to reduced peak memory usage
+  remove_unused_columns: false
+  torch_empty_cache_steps: 30
+  packing: true # whether to use packing for training.
+
+

@@ -1,0 +1,7 @@
+# parâmetros gerais para criação de splits de treino/teste para link prediction
+test_size: 0.01
+seed: 2026
+target_evaluation: "frozen_llm"
+include_negative_samples: True
+
+# parametros para geração de caminhadas 

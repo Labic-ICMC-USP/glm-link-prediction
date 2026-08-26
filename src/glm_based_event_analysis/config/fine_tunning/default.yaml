@@ -1,0 +1,52 @@
+global_seed: 2026
+
+dataset_creation:
+  edge_sample_pct: 1 # percentage of edges to sample for dataset creation. sampled from the train graph
+  neg_edges: true # whether to include negative edges in the dataset. uses the same number of negative edges as positive edges if true
+  include_neighbours: false # whether to include source node neighbours in the dataset samples. 
+  data_path: "/exp_local/kenzosaki/data/ai_news_ft/" # directory to save (or load) the created dataset
+  recreate: true # whether to recreate the dataset even if it already exists
+  seed: 2026 # random seed for dataset creation and splitting
+
+unsloth:
+  model_name: "unsloth/gemma-3-4b-it" # huggingface model
+  model_family: "gemma-3" # used to obtain the chat template
+  max_seq_length: 512 # input sequence length for the model
+  instruction_part: "<start_of_turn>user\n" # todo: verificar como determinar isso automaticamente
+  response_part: "<start_of_turn>model\n"
+  num_proc: 8 # number of processes to use for dataset processing. if to large, it can cause memory issues. set to 1 to disable multiprocessing.
+
+lora:
+  r: 16
+  alpha: 16
+  lora_dropout: 0.05
+  bias: "none"
+  random_state: 2026
+
+training:
+  dataset_text_field: "text"
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 16 
+  gradient_accumulation_steps: 16 
+  warmup_steps: 69
+  num_train_epochs: 1 
+  save_total_limit: 2 # will relate to the evaluation below
+  learning_rate: 0.0002 # Reduce to 2e-5 for long training runs
+  optim: "adamw_8bit"
+  weight_decay: 0.001
+  lr_scheduler_type: "linear"
+  report_to: "none"
+  output_dir: "/exp_local/kenzosaki/models/ai_events_gemma_3_4b_ft_callback_tests" # directory to save the fine-tuned model and results
+  logging_dir: "/exp_local/kenzosaki/models/ai_events_gemma_3_4b_ft_callback_tests" # directory to save training logs
+  seed: 2026
+  data_seed: 2026
+  torch_empty_cache_steps: 10
+
+evaluation:
+  eval_steps: 20 # evaluate every eval_steps during training
+  eval_bs: 16
+  log_file: "early_st_lp_evaluation_log.json" # file to save evaluation results
+  predictions_file: "early_st_lp_evaluation_predictions.json" # file to save evaluation predictions
+  early_stopping: true
+  metric_for_best_model: "f1" # metric to use for early stopping and best model selection
+  early_stopping_patience: 3 # number of evaluations with no improvement to wait before

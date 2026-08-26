@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=82.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glm-based-event-analysis"
+version = "0.0.1"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+description = "GLM Based Event Analysis"
+dependencies = [
+    # Add your dependencies here, e.g.:
+    "multiprocess>=0.70.11",
+    "gnews>=0.4.3",
+    "python-dateutil>=2.9.0.post0",
+    "matplotlib>=3.10.8",
+    "pandas>=3.0.2",
+    "ollama>=0.6.1",
+    "openrouter>=0.9.1",
+    "haversine>=2.9.0", 
+    "tqdm>=4.67.3",
+    "scipy>=1.17.1",
+    "seaborn>=0.13.2",
+    "networkx>=3.6.1",
+    "plotly>=6.7.0",
+    "yfiles-jupyter-graphs>=1.10.11",
+    "pyvis>=0.3.2",
+    "scikit-learn>=1.8.0",
+    "python-dotenv>=1.2.2",
+    "sentence-transformers>=5.4.1"
+]
+
+[tool.setuptools]
+packages = ["glm_based_event_analysis"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[project.scripts]
+# terminal_command = "package.module:function"
+create_iptc_event_graph = "glm_based_event_analysis.cli.create_iptc_event_graph:main"
+create_all_event_graphs = "glm_based_event_analysis.cli.create_all_event_graphs:main"
+create_all_eval_splits = "glm_based_event_analysis.cli.create_all_eval_splits:main"
+evaluate_icl_link_prediction = "glm_based_event_analysis.cli.evaluate_icl_link_prediction:main"

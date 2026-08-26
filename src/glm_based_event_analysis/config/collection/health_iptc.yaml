@@ -1,0 +1,13 @@
+# expor mais parametros?
+gnews:
+  language: en
+  country: null
+  max_results: 100
+  jobs: 10
+  day_increment: 2
+  start_date: "2016-06-01"
+  end_date: "2026-06-01"
+  max_news_per_keyword: 10000
+
+queries:
+  - health disease outbreak hospital

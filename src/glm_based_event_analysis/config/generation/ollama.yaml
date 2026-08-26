@@ -1,0 +1,11 @@
+provider: ollama # options: [ollama, openrouter, pre_trained]
+model_name: gemma3:4b # options (validated): [gemma3:4b, google/gemini-2.5-flash-lite]
+use_neighbours: false
+
+generation_params:
+  seed: 2026
+  temperature: 1.2
+  top_p: 0.9
+  top_k: 40
+  repeat_penalty: 1.1
+  max_length: 1024
